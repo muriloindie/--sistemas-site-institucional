@@ -2,20 +2,30 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { LINKS } from "@/lib/links";
 import { IconClose, IconMenu, IconWhatsapp } from "@/components/icons";
 import { WhatsappLink } from "@/components/ExitLink";
 
 const NAV = [
-  { href: "#solucoes", label: "Soluções" },
-  { href: "#ebot", label: "Produtos" },
-  { href: "#cases", label: "Cases" },
-  { href: "#processo", label: "Como trabalhamos" },
+  { href: "/", label: "Início" },
+  { href: "/sobre", label: "A Ê-Sistemas" },
+  { href: "/solucoes", label: "Soluções" },
+  { href: "/produtos", label: "Produtos & Cases" },
+  { href: "/contato", label: "Contato" },
+  { href: LINKS.privacy, label: "Privacidade e LGPD" },
 ];
+
+function isActive(pathname: string, href: string) {
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -23,6 +33,11 @@ export default function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // fecha o menu ao navegar entre páginas
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     if (!open) return;
@@ -36,14 +51,19 @@ export default function Navbar() {
   return (
     <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
       <div className="site-container site-nav">
-        <a className="site-brand" href="#inicio" aria-label="Ê-Sistemas — início">
+        <Link className="site-brand" href="/" aria-label="Ê-Sistemas — página inicial">
           <Image src="/logo-esistemas.webp" alt="Ê-Sistemas" width={250} height={50} priority style={{ width: "158px", height: "auto" }} />
-        </a>
+        </Link>
         <nav className="desktop-nav" aria-label="Navegação principal">
           {NAV.map((item) => (
-            <a className="nav-link" key={item.href} href={item.href}>
+            <Link
+              className={`nav-link ${isActive(pathname, item.href) ? "is-active" : ""}`}
+              key={item.href}
+              href={item.href}
+              aria-current={isActive(pathname, item.href) ? "page" : undefined}
+            >
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
         <WhatsappLink className="button button-primary header-cta" href={LINKS.specialist}>
@@ -62,9 +82,15 @@ export default function Navbar() {
       {open ? (
         <nav className="mobile-nav site-container" id="mobile-navigation" aria-label="Navegação móvel">
           {NAV.map((item) => (
-            <a className="mobile-nav-link" key={item.href} href={item.href} onClick={() => setOpen(false)}>
+            <Link
+              className={`mobile-nav-link ${isActive(pathname, item.href) ? "is-active" : ""}`}
+              key={item.href}
+              href={item.href}
+              aria-current={isActive(pathname, item.href) ? "page" : undefined}
+              onClick={() => setOpen(false)}
+            >
               {item.label}
-            </a>
+            </Link>
           ))}
           <WhatsappLink
             className="button button-primary mobile-nav-cta"

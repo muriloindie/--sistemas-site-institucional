@@ -18,15 +18,27 @@ export function whatsappLink(message: string) {
   return `https://wa.me/${DEMO_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
+/**
+ * Rotas internas do site institucional. Páginas de produto e case possuem
+ * rotas próprias — as âncoras antigas continuam existindo na home como
+ * compatibilidade de links, mas a navegação principal usa `next/link`.
+ */
 export const LINKS = {
-  specialist: whatsappLink("Olá! Gostaria de conversar sobre um projeto com a Ê-Sistemas."),
-  solutions: "#solucoes",
-  ebot: "#ebot",
-  ebotApi: "#ebot",
-  ebotPanel: "#ebot",
-  ebotClinical: "#clinical",
-  ebotExplorer: "#explorer",
+  home: "/",
+  about: "/sobre",
+  solutions: "/solucoes",
+  process: "/solucoes#processo",
+  products: "/produtos",
+  cases: "/produtos#cases",
+  ebot: "/produtos",
+  ebotApi: "/produtos/ebot-panel-api",
+  ebotPanel: "/produtos/ebot-panel-api",
+  ebotClinical: "/produtos/ebot-clinical",
+  ebotExplorer: "/produtos/ebot-explorer",
+  privacy: "/privacidade",
+  contact: "/contato",
   whatsapp: whatsappLink("Olá! Gostaria de falar com um especialista da Ê-Sistemas."),
+  specialist: whatsappLink("Olá! Gostaria de conversar sobre um projeto com a Ê-Sistemas."),
   instagram: SOCIAL.instagram,
   facebook: SOCIAL.facebook,
 };

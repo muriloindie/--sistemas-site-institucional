@@ -1,34 +1,21 @@
-import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Footer from "@/components/Footer";
-import TrustStrip from "@/components/sections/TrustStrip";
-import History from "@/components/sections/History";
-import Partners from "@/components/sections/Partners";
-import Services from "@/components/sections/Services";
-import Products from "@/components/sections/Products";
-import Cases from "@/components/sections/Cases";
-import Approach from "@/components/sections/Approach";
-import Testimonials from "@/components/sections/Testimonials";
-import FinalCTA from "@/components/sections/FinalCTA";
+import HomeIntro from "@/components/home/HomeIntro";
+import HomeSolutions from "@/components/home/HomeSolutions";
+import HomeProducts from "@/components/home/HomeProducts";
+import HomeCases from "@/components/home/HomeCases";
+import HomeMethod from "@/components/home/HomeMethod";
+import HomeFAQ from "@/components/home/HomeFAQ";
 
 export default function Page() {
   return (
     <>
-      <a className="skip-link" href="#conteudo">Pular para o conteúdo</a>
-      <Navbar />
-      <main id="conteudo">
-        <Hero />
-        <TrustStrip />
-        <History />
-        <Partners />
-        <Services />
-        <Products />
-        <Cases />
-        <Approach />
-        <Testimonials />
-        <FinalCTA />
-      </main>
-      <Footer />
+      <Hero />
+      <HomeIntro />
+      <HomeSolutions />
+      <HomeProducts />
+      <HomeCases />
+      <HomeMethod />
+      <HomeFAQ />
     </>
   );
 }

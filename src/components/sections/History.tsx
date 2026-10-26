@@ -35,19 +35,21 @@ const RECOGNITIONS = [
   { title: "Plug and Play", text: "Conexão com o ecossistema" },
 ];
 
-export default function History() {
+export default function History({ showHeading = true }: { showHeading?: boolean }) {
   return (
     <section className="section-block history-section" id="historia">
       <div className="site-container">
-        <Reveal className="motion-reveal">
-          <div className="section-heading section-heading-split history-heading">
-            <div>
-              <span className="section-kicker">Nossa história</span>
-              <h2 className="section-title">Crescemos resolvendo desafios <span>de verdade.</span></h2>
+        {showHeading ? (
+          <Reveal className="motion-reveal">
+            <div className="section-heading section-heading-split history-heading">
+              <div>
+                <span className="section-kicker">Nossa história</span>
+                <h2 className="section-title">Crescemos resolvendo desafios <span>de verdade.</span></h2>
+              </div>
+              <p className="section-intro">A Ê-Sistemas une experiência em projetos digitais ao desenvolvimento de produtos próprios. Cada etapa dessa trajetória parte da mesma pergunta: o que precisa funcionar melhor?</p>
             </div>
-            <p className="section-intro">A Ê-Sistemas une experiência em projetos digitais ao desenvolvimento de produtos próprios. Cada etapa dessa trajetória parte da mesma pergunta: o que precisa funcionar melhor?</p>
-          </div>
-        </Reveal>
+          </Reveal>
+        ) : null}
 
         <div className="history-timeline" aria-label="Linha do tempo da Ê-Sistemas">
           {MILESTONES.map((item, index) => (

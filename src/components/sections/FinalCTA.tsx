@@ -4,16 +4,26 @@ import { IconArrow, IconBattery, IconCheck, IconFacebook, IconInstagram, IconLoc
 import { ExitLink, WhatsappLink } from "@/components/ExitLink";
 import { Reveal } from "@/components/ui";
 
-export default function FinalCTA() {
+export default function FinalCTA({ asPage = false }: { asPage?: boolean }) {
   return (
-    <section className="contact-section" id="contato">
+    <section className={`contact-section${asPage ? " contact-section-page" : ""}`} id="contato">
       <span className="contact-glow" aria-hidden="true" />
+      <span className="contact-bubble bubble-1" aria-hidden="true" />
+      <span className="contact-bubble bubble-2" aria-hidden="true" />
+      <span className="contact-bubble bubble-3" aria-hidden="true" />
+      <span className="contact-bubble bubble-4" aria-hidden="true" />
       <div className="site-container contact-layout">
         <div className="contact-copy">
           <span className="contact-kicker"><i /> Vamos conversar</span>
-          <h2>
-            Um bom projeto começa com <span>uma boa conversa.</span>
-          </h2>
+          {asPage ? (
+            <h1 className="contact-title">
+              Um bom projeto começa com <span>uma boa conversa.</span>
+            </h1>
+          ) : (
+            <h2 className="contact-title">
+              Um bom projeto começa com <span>uma boa conversa.</span>
+            </h2>
+          )}
           <p>
             Conte o que precisa resolver. Em uma primeira conversa, entendemos o cenário e mostramos
             como a Ê-Sistemas pode estruturar a solução.

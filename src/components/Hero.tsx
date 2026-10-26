@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { LINKS } from "@/lib/links";
 import { IconArrow, IconBolt, IconCheck, IconWhatsapp } from "@/components/icons";
 import { WhatsappLink } from "@/components/ExitLink";
@@ -6,6 +7,10 @@ import HeroVisual from "@/components/HeroVisual";
 export default function Hero() {
   return (
     <section className="hero-section" id="inicio">
+      <span className="hero-bubble bubble-1" aria-hidden="true" />
+      <span className="hero-bubble bubble-2" aria-hidden="true" />
+      <span className="hero-bubble bubble-3" aria-hidden="true" />
+      <span className="hero-bubble bubble-4" aria-hidden="true" />
       <div className="site-container hero-layout">
         <div className="hero-copy">
           <span className="eyebrow"><i /> Engenharia de software • Produtos digitais</span>
@@ -17,12 +22,12 @@ export default function Hero() {
             conectar pessoas, dados e processos.
           </p>
           <div className="hero-actions">
-            <WhatsappLink className="button button-primary" href={LINKS.specialist}>
-              <IconWhatsapp /> Conversar sobre um projeto <IconArrow />
+            <Link className="button button-primary" href={LINKS.solutions}>
+              Conhecer as soluções <IconArrow />
+            </Link>
+            <WhatsappLink className="button button-secondary" href={LINKS.specialist}>
+              <IconWhatsapp /> Conversar sobre um projeto
             </WhatsappLink>
-            <a className="button button-secondary" href={LINKS.solutions}>
-              Conhecer as soluções
-            </a>
           </div>
           <div className="hero-proof" aria-label="Atuação da Ê-Sistemas">
             <span><IconCheck /> Software sob medida</span>

@@ -2,6 +2,10 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { ExitLinkProvider } from "@/components/ExitLink";
 import SplashScreen from "@/components/SplashScreen";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import CookieConsentPreview from "@/components/CookieConsentPreview";
+import { SITE } from "@/content/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -11,15 +15,18 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Ê-Sistemas — Software, integrações e produtos digitais",
-  description:
-    "Desenvolvemos software sob medida, integrações, automações e produtos digitais para conectar processos e resolver desafios reais de operação.",
+  metadataBase: new URL(SITE.url),
+  title: {
+    default: "Ê-Sistemas — Software, integrações e produtos digitais",
+    template: "%s — Ê-Sistemas",
+  },
+  description: SITE.description,
   openGraph: {
-    title: "Ê-Sistemas — Software, integrações e produtos digitais",
-    description:
-      "Tecnologia sob medida e produtos próprios para conectar pessoas, dados e processos.",
+    title: SITE.name,
+    description: SITE.description,
     type: "website",
     locale: "pt_BR",
+    siteName: SITE.name,
   },
   icons: [{ url: "/logo-esistemas.webp", type: "image/webp" }],
 };
@@ -36,7 +43,15 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={inter.variable}>
       <body>
-        <ExitLinkProvider>{children}</ExitLinkProvider>
+        <ExitLinkProvider>
+          <a className="skip-link" href="#conteudo">Pular para o conteúdo</a>
+          <Navbar />
+          <main id="conteudo">
+            {children}
+          </main>
+          <Footer />
+          <CookieConsentPreview />
+        </ExitLinkProvider>
         <SplashScreen />
       </body>
     </html>

@@ -1,5 +1,7 @@
+import Link from "next/link";
 import { IconArrow, IconChat, IconCheck, IconCode, IconDatabase, IconLink, IconRefresh, IconShield, IconUsers } from "@/components/icons";
 import { Reveal } from "@/components/ui";
+import { LINKS } from "@/lib/links";
 
 const STEPS = [
   { number: "01", icon: <IconUsers />, title: "Entender", text: "Mapeamos o negócio, os usuários e os pontos que travam a operação." },
@@ -55,7 +57,7 @@ export default function Approach() {
               <span className="system-node system-node-app"><IconCode /><b>Aplicações</b></span>
             </div>
             <div className="integration-card-foot"><span><IconCheck /> APIs e webhooks</span><span><IconShield /> Segurança desde a arquitetura</span><span><IconRefresh /> Evolução contínua</span></div>
-            <a className="integration-link" href="#contato">Fale com nosso time <IconArrow /></a>
+            <Link className="integration-link" href={LINKS.contact}>Fale com nosso time <IconArrow /></Link>
           </div>
           </Reveal>
         </div>
