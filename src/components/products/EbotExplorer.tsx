@@ -5,6 +5,7 @@ import {
   IconCamera,
   IconCompass,
   IconEye,
+  IconExternal,
   IconLayers,
   IconMap,
   IconPin,
@@ -13,7 +14,7 @@ import {
   IconTarget,
   IconWhatsapp,
 } from "@/components/icons";
-import { WhatsappLink } from "@/components/ExitLink";
+import { ExternalSiteLink, WhatsappLink } from "@/components/ExitLink";
 import { ProductIcon } from "@/components/products/mockups";
 import { whatsappLink } from "@/lib/links";
 
@@ -52,9 +53,14 @@ export default function EbotExplorer() {
           <span><b>QR</b><small>totem e WhatsApp</small></span>
           <span><b>editável</b><small>rota no celular</small></span>
         </div>
-        <WhatsappLink className="product-link" href={whatsappLink("Olá! Gostaria de conhecer o Ê-Bot Explorer.")}>
-          <IconWhatsapp /> Conhecer o Explorer <IconArrow />
-        </WhatsappLink>
+        <div className="product-actions">
+          <ExternalSiteLink className="product-link product-website-link" href="https://explorer.tur.br/" label="Ê-Bot Explorer" domain="explorer.tur.br">
+            <IconExternal /> Visitar site
+          </ExternalSiteLink>
+          <WhatsappLink className="product-link product-whatsapp-link" href={whatsappLink("Olá! Gostaria de conhecer o Ê-Bot Explorer.")}>
+            <IconWhatsapp /> Falar no WhatsApp <IconArrow />
+          </WhatsappLink>
+        </div>
       </div>
       <div className="product-visual">
         <div className="exp-frame" aria-hidden="true">

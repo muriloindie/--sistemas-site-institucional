@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { IconArrow, IconClose } from "@/components/icons";
 
 export type LightboxItem = { src: string; alt: string };
@@ -106,12 +107,12 @@ export default function Lightbox({
 
   useEffect(() => () => { if (closeTimer.current) clearTimeout(closeTimer.current); }, []);
 
-  if (!isOpen || active === null) return null;
+  if (!isOpen || active === null || typeof document === "undefined") return null;
 
   const item = items[active];
   const go = (delta: number) => onIndexChange((active + delta + items.length) % items.length);
 
-  return (
+  return createPortal(
     <div
       className={`media-modal lightbox ${!entering && !closing ? "is-open" : ""}`}
       onMouseDown={(event) => {
@@ -151,6 +152,7 @@ export default function Lightbox({
           </button>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }

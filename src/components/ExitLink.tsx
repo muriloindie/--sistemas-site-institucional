@@ -9,15 +9,16 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { IconArrow, IconFacebook, IconInstagram, IconWhatsapp, IconClose } from "@/components/icons";
+import { IconArrow, IconClose, IconExternal, IconFacebook, IconInstagram, IconWhatsapp } from "@/components/icons";
 import { CONTACT } from "@/lib/links";
 
-type Network = "instagram" | "facebook" | "whatsapp";
+type Network = "instagram" | "facebook" | "whatsapp" | "website";
 
 type ExitRequest = {
   href: string;
   label: string;
   network: Network;
+  destination?: string;
 };
 
 type ExitState = ExitRequest & { phase: "opening" | "open" | "closing" };
@@ -43,6 +44,11 @@ const NETWORK_META: Record<Network, { name: string; domain: string; icon: ReactN
     name: "WhatsApp",
     domain: `wa.me · ${CONTACT.whatsapp}`,
     icon: <IconWhatsapp />,
+  },
+  website: {
+    name: "site externo",
+    domain: "",
+    icon: <IconExternal />,
   },
 };
 
@@ -114,6 +120,40 @@ export function WhatsappLink({
         event.stopPropagation();
         requestExit({ href, label, network: "whatsapp" });
         onClick?.();
+      }}
+    >
+      {children}
+    </a>
+  );
+}
+
+/** Site externo que apresenta confirmação antes de abrir uma nova aba. */
+export function ExternalSiteLink({
+  href,
+  label,
+  domain,
+  className,
+  children,
+}: {
+  href: string;
+  label: string;
+  domain: string;
+  className?: string;
+  children: ReactNode;
+}) {
+  const requestExit = useExitLink();
+
+  return (
+    <a
+      className={className}
+      href={href}
+      target="_blank"
+      rel="noreferrer noopener"
+      data-network="website"
+      onClick={(event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        requestExit({ href, label, network: "website", destination: domain });
       }}
     >
       {children}
@@ -239,8 +279,10 @@ export function ExitLinkProvider({ children }: { children: ReactNode }) {
             <p id="exit-modal-description">
               {state.network === "whatsapp"
                 ? "Para continuar, você será levado para uma conversa no WhatsApp com a equipe da Ê-Sistemas em uma nova aba:"
-                : "Para continuar, você será levado ao " + meta.name + " da Ê-Sistemas em uma nova aba:"}
-              <strong>{meta.domain}</strong>
+                : state.network === "website"
+                  ? `Para continuar, você será levado ao site oficial de ${state.label} em uma nova aba:`
+                  : "Para continuar, você será levado ao " + meta.name + " da Ê-Sistemas em uma nova aba:"}
+              <strong>{state.destination ?? meta.domain}</strong>
             </p>
 
             <div className="exit-modal-actions">

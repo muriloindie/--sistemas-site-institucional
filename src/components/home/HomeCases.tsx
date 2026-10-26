@@ -30,7 +30,7 @@ export default function HomeCases() {
           </div>
         </Reveal>
 
-        <Reveal className="motion-reveal">
+        <Reveal className="motion-reveal home-case-reveal">
           <article className="home-case home-case-leiloae">
             <div className="home-case-visual home-leiloae-visual">
               <Image src="/leiloae/leilao.jpg" alt="Cenário de um leilão" fill sizes="(max-width: 820px) 92vw, 48vw" />
@@ -52,7 +52,7 @@ export default function HomeCases() {
           </article>
         </Reveal>
 
-        <Reveal className="motion-reveal">
+        <Reveal className="motion-reveal home-case-reveal">
           <article className="home-case home-case-econtrol">
             <div className="home-case-copy">
               <span className="home-case-sector"><IconTruck /> LOGÍSTICA & ENTREGAS</span>

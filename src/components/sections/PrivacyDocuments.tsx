@@ -3,18 +3,20 @@
 import { useState } from "react";
 import PdfModal, { type PdfDoc } from "@/components/PdfModal";
 import { Reveal } from "@/components/ui";
-import { IconArrow, IconExternal, IconEye } from "@/components/icons";
+import { IconArrow, IconExternal, IconEye, IconShield } from "@/components/icons";
 
-const SHARED_PDFS: PdfDoc[] = [
+const SHARED_PDFS: (PdfDoc & { summary: string })[] = [
   {
-    title: "Aviso de Privacidade — LGPD",
+    title: "Programa de Governança em Privacidade (LGPD)",
     src: "/pdf/ebot_LGPD.pdf",
-    filename: "e-sistemas_LGPD.pdf",
+    filename: "e-sistemas_programa-governanca-lgpd.pdf",
+    summary: "Programa corporativo com políticas, procedimentos, avaliações de risco, medidas de segurança e evidências de governança em privacidade.",
   },
   {
-    title: "Política de Privacidade",
+    title: "Política de Privacidade do Cliente",
     src: "/pdf/ebot_politica_privacidade.pdf",
-    filename: "e-sistemas_politica-privacidade.pdf",
+    filename: "e-sistemas_politica-privacidade-cliente.pdf",
+    summary: "Informações sobre dados tratados nos serviços, papéis de controlador e operador, finalidades, compartilhamento, retenção e direitos dos titulares.",
   },
 ];
 
@@ -47,7 +49,7 @@ export default function PrivacyDocuments() {
                 </span>
                 <div className="privacy-doc-info">
                   <h3>{doc.title}</h3>
-                  <p>Válido para os produtos Ê-Bot e para os serviços prestados pela Ê-Sistemas. Atualizado e publicado conforme os requisitos da LGPD.</p>
+                  <p>{doc.summary}</p>
                 </div>
                 <div className="privacy-doc-actions">
                   <button className="button button-primary" type="button" onClick={() => setOpenDoc(doc)}>
@@ -62,6 +64,20 @@ export default function PrivacyDocuments() {
             </Reveal>
           ))}
         </div>
+
+        <Reveal className="motion-reveal">
+          <aside className="privacy-dpo-contact">
+            <span className="privacy-dpo-icon"><IconShield /></span>
+            <div>
+              <small>CANAL DO ENCARREGADO</small>
+              <h3>Fale com o DPO</h3>
+              <p>Thiago Marcos Montagner · Encarregado pelo Tratamento de Dados Pessoais</p>
+            </div>
+            <a href="mailto:thiagomarcosmontagner@hotmail.com">
+              thiagomarcosmontagner@hotmail.com <IconExternal />
+            </a>
+          </aside>
+        </Reveal>
       </div>
 
       <PdfModal doc={openDoc} onClose={() => setOpenDoc(null)} />

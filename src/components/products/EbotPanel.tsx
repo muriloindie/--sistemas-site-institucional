@@ -2,11 +2,12 @@ import {
   IconArrow,
   IconChart,
   IconChat,
+  IconExternal,
   IconPulse,
   IconTarget,
   IconWhatsapp,
 } from "@/components/icons";
-import { WhatsappLink } from "@/components/ExitLink";
+import { ExternalSiteLink, WhatsappLink } from "@/components/ExitLink";
 import { DashboardMock, ProductIcon, type Kpi } from "@/components/products/mockups";
 import { whatsappLink } from "@/lib/links";
 
@@ -40,9 +41,14 @@ export default function EbotPanel() {
           <span><b>1</b><small>central multi-canal</small></span>
           <span><b>API</b><small>webhooks nativos</small></span>
         </div>
-        <WhatsappLink className="product-link" href={whatsappLink("Olá! Gostaria de conhecer o Ê-Bot Panel e a Ê-Bot API.")}>
-          <IconWhatsapp /> Conhecer o Ê-Bot <IconArrow />
-        </WhatsappLink>
+        <div className="product-actions">
+          <ExternalSiteLink className="product-link product-website-link" href="https://crm.ebot.ia.br/" label="Ê-Bot Panel + API" domain="crm.ebot.ia.br">
+            <IconExternal /> Visitar site
+          </ExternalSiteLink>
+          <WhatsappLink className="product-link product-whatsapp-link" href={whatsappLink("Olá! Gostaria de conhecer o Ê-Bot Panel e a Ê-Bot API.")}>
+            <IconWhatsapp /> Falar no WhatsApp <IconArrow />
+          </WhatsappLink>
+        </div>
       </div>
       <div className="product-visual">
         <DashboardMock

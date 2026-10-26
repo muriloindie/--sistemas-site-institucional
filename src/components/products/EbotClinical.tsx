@@ -7,8 +7,9 @@ import {
   IconUsers,
   IconWhatsapp,
   IconArrow,
+  IconExternal,
 } from "@/components/icons";
-import { WhatsappLink } from "@/components/ExitLink";
+import { ExternalSiteLink, WhatsappLink } from "@/components/ExitLink";
 import { DashboardMock, ProductIcon, type Kpi } from "@/components/products/mockups";
 import { whatsappLink } from "@/lib/links";
 
@@ -46,9 +47,14 @@ export default function EbotClinical() {
           <span><b>96</b><small>consultas confirmadas*</small></span>
           <em className="product-stats-note">*Indicadores ilustrativos</em>
         </div>
-        <WhatsappLink className="product-link" href={whatsappLink("Olá! Gostaria de conhecer o Ê-Bot Clinical.")}>
-          <IconWhatsapp /> Conhecer o Clinical <IconArrow />
-        </WhatsappLink>
+        <div className="product-actions">
+          <ExternalSiteLink className="product-link product-website-link" href="https://eclinical.ia.br/" label="Ê-Bot Clinical" domain="eclinical.ia.br">
+            <IconExternal /> Visitar site
+          </ExternalSiteLink>
+          <WhatsappLink className="product-link product-whatsapp-link" href={whatsappLink("Olá! Gostaria de conhecer o Ê-Bot Clinical.")}>
+            <IconWhatsapp /> Falar no WhatsApp <IconArrow />
+          </WhatsappLink>
+        </div>
       </div>
       <div className="product-visual">
         <DashboardMock

@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { IconClose, IconPlay } from "@/components/icons";
 
 type Phase = "opening" | "open" | "closing";
@@ -166,7 +167,7 @@ export default function PhoneVideo({
         </div>
       </div>
 
-      {phase ? (
+      {phase && typeof document !== "undefined" ? createPortal(
         <div
           className={`media-modal video-modal ${phase === "open" ? "is-open" : ""}`}
           onMouseDown={(event) => {
@@ -190,7 +191,8 @@ export default function PhoneVideo({
             </div>
             <span className="media-modal-hint">Vídeo completo, com áudio · Esc para fechar</span>
           </div>
-        </div>
+        </div>,
+        document.body,
       ) : null}
     </>
   );

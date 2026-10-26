@@ -156,7 +156,9 @@ export default function HomeSolutions() {
                   <h3>{solution.title}</h3>
                   <p>{solution.text}</p>
                   <ul>{solution.items.map((item) => <li key={item}><IconCheck />{item}</li>)}</ul>
-                  <Link className="home-card-link" href={solution.href}>Explorar esta solução <IconArrow /></Link>
+                  <div className="home-solution-actions">
+                    <Link className="home-card-link" href={solution.href}>Explorar esta solução <IconArrow /></Link>
+                  </div>
                 </div>
                 <SolutionVisual type={solution.key} />
               </article>

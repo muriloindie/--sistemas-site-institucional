@@ -8,39 +8,44 @@ import ContextualCTA from "@/components/ContextualCTA";
 export const metadata: Metadata = {
   title: "Privacidade e LGPD",
   description:
-    "Como a Ê-Sistemas coleta, usa e protege dados pessoais: compromisso de privacidade, direitos do titular, papel da IA no atendimento e documentos oficiais (LGPD e Política de Privacidade) para visualizar e baixar.",
+    "Consulte o Programa de Governança em Privacidade e a Política de Privacidade do Cliente da Ê-Sistemas, com informações sobre tratamento, direitos dos titulares, cookies e canal do DPO.",
 };
 
 const PRIVACY_FAQ = [
   {
-    question: "Como a LGPD aparece em um atendimento com IA?",
+    question: "Como os dados são tratados nos serviços digitais?",
     answer:
-      "Automação e IA tratam os dados pela finalidade: minimização do que circula, segmento de acesso, registro das conversas para qualidade e aplicação do contexto combinado com você. A supervisão humana permanece no controle das decisões de maior impacto.",
+      "A Política de Privacidade do Cliente descreve categorias de dados e finalidades relacionadas aos serviços tecnológicos, sistemas e chatbots. Conforme o contexto contratual, a Ê-Sistemas pode atuar como controladora ou operadora; como operadora, segue as instruções documentadas do cliente controlador.",
   },
   {
     question: "Quais direitos posso exercer como titular de dados?",
     answer:
-      "Aos previstos pela LGPD: confirmação de tratamento, acesso aos dados, correção, anonimização ou exclusão, portabilidade, informação sobre compartilhamento e revogação do consentimento. O canal do encarregado divulgado na documentação responde esses pedidos.",
+      "A Política de Privacidade do Cliente informa direitos como confirmação e acesso, correção, anonimização, bloqueio ou eliminação, portabilidade quando aplicável, informação sobre compartilhamentos e revogação do consentimento. Envie dúvidas ou solicitações ao DPO pelo e-mail thiagomarcosmontagner@hotmail.com. Se a Ê-Sistemas atuar como operadora, encaminhará a solicitação ao controlador responsável.",
   },
   {
     question: "Os dados coletados podem ir para terceiros?",
     answer:
-      "Apenas quando necessário e sempre com contrato de tratamento: provedores de infraestrutura, canais de mensagem e serviços contratados. Não há venda de dados, e o compartilhamento está descrito nos documentos oficiais desta página.",
+      "A Política prevê compartilhamento com parceiros e fornecedores contratualmente vinculados, operadores conforme as instruções do controlador e autoridades públicas quando houver obrigação legal. Transferências internacionais por provedores de tecnologia devem observar os requisitos aplicáveis da LGPD.",
   },
   {
     question: "Por quanto tempo os dados ficam armazenados?",
     answer:
-      "Pelo tempo necessário à finalidade declarada e às obrigações aplicáveis. Cumprido esse ciclo, o dado é eliminado de forma irreversível ou tornado anônimo, conforme o contexto da operação.",
+      "Pelo tempo necessário às finalidades, às obrigações legais ou contratuais e ao exercício regular de direitos. A Política de Retenção citada no Programa de Governança e o registro interno das operações detalham critérios e prazos por contexto; ao final, os dados são eliminados ou anonimizados quando aplicável.",
   },
   {
-    question: "O que acontece com os dados quando o atendimento é automatizado?",
+    question: "Qual é o papel da Ê-Sistemas no tratamento?",
     answer:
-      "Os fluxos são configurados com escopo, retenção e autorização definidos junto ao cliente — inclusive quando envolve WhatsApp, agenda ou integrações com sistemas internos. Logs e trilhas de acesso deixam o uso auditável.",
+      "O papel depende da operação: a Ê-Sistemas pode ser controladora em tratamentos próprios e operadora quando trata dados segundo instruções documentadas do cliente. As responsabilidades, finalidades e medidas aplicáveis devem considerar o contexto e os documentos contratuais.",
   },
   {
-    question: "Onde fico por dentro do texto completo?",
+    question: "Como são usados cookies?",
     answer:
-      "Na seção de documentos acima. O Aviso de Privacidade (LGPD) e a Política de Privacidade podem ser visualizados aqui mesmo, no navegador, ou baixados para leitura off-line.",
+      "A Política de Privacidade descreve cookies e tecnologias similares para funcionamento, preferências, análise de uso e, quando aplicável, marketing. Cookies não essenciais dependem de consentimento prévio. O aviso de cookies atualmente exibido no site é apenas uma prévia visual: as opções não são armazenadas nem aplicadas a ferramentas de rastreamento.",
+  },
+  {
+    question: "Onde consulto os documentos completos?",
+    answer:
+      "Na seção de documentos acima. O Programa de Governança em Privacidade e a Política de Privacidade do Cliente podem ser visualizados no navegador ou baixados para leitura off-line.",
   },
 ];
 
@@ -51,14 +56,14 @@ export default function PrivacidadePage() {
         crumbs={[{ href: "/privacidade", label: "Privacidade e LGPD" }]}
         kicker="Privacidade e LGPD"
         title={<>Dados pessoais tratados com <span className="text-highlight">transparência e propósito.</span></>}
-        lead="Como coletamos, usamos e protegemos informações no relacionamento com clientes, parceiros e usuários — e onde você encontra os documentos que formalizam esse compromisso."
+        lead="Consulte como a Ê-Sistemas organiza a governança e a proteção de dados no relacionamento com clientes, parceiros e usuários, além dos canais para dúvidas e solicitações."
       />
       <PrivacyCommit />
       <PrivacyDocuments />
       <FAQ
         items={PRIVACY_FAQ}
         title={<>Perguntas sobre privacidade e <span className="text-highlight">tratamento de dados.</span></>}
-        intro="Respostas sobre LGPD, uso de IA, compartilhamento, retenção e a leitura dos documentos oficiais."
+        intro="Respostas alinhadas ao Programa de Governança em Privacidade e à Política de Privacidade do Cliente."
       />
       <ContextualCTA
         title={<>Ficou com alguma dúvida sobre <span className="text-highlight">dados e privacidade?</span></>}
